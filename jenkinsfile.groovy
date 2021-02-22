@@ -7,6 +7,9 @@ sh 'echo "in building stage"'
 }
 stage ( "approve"){
 sh 'echo "in approval stage" '
+  timeout(time: 15, unit: "MINUTES") {
+    input message: 'Do you want to approve the deploy in production?', ok: 'Yes'
+}
 }
 stage ( " deploy "){
 sh 'echo "in deployement stage"'
